@@ -1,0 +1,11 @@
+ESLint Install:
+
+1) npm install -g eslint
+
+2) eslint --init
+
+3) .eslintrc.json  (get from this folder)
+
+4) npm install eslint-plugin-babel -g
+
+5) npm i eslint-plugin-react -g
