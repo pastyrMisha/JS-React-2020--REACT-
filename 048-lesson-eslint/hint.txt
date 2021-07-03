@@ -8,4 +8,4 @@ ESLint Install:
 
 4) npm install eslint-plugin-babel -g
 
-5) npm i eslint-plugin-react -g 
+5) npm i eslint-plugin-react -g
