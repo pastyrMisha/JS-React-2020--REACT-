@@ -29,7 +29,7 @@ function calcCash(own) {
     for (var i = 0; i < everyCash[1].length; i++) {
         total += +everyCash[1][i];
     }
-    return total;
+    return total; 
 }
 
 var money = calcCash(null, sponsors.cash);
