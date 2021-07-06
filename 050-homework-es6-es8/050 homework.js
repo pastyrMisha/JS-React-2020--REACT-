@@ -38,3 +38,10 @@ function makeBusiness(owner, director, cash, emp) {
     console.log('Note. Be careful with ' + sponsors.eu[0] + ". It's a huge risk.");
 }
 makeBusiness.apply(null, ['Sam', null, money, employersNames]);
+
+
+
+// We have a business. Owner: Sam, director: Victor. Our budget: 87400. And our employers: alex,ludmila,viktor,oleg,inna,ivan,alex,olga,ann
+// And we have a sponsors: 
+// SRL PLO J&K RusAuto SBO unexpected sponsor
+// Note. Be careful with SRL. It's a huge risk.
