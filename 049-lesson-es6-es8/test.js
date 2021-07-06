@@ -184,6 +184,7 @@
 // const res = {...user, ...admin, avatar};
 // console.log(res);
 
+// { name: 'admin', pass: 'root', rights: 'user', avatar: 'Photo' } результат
 
 // ============= Деструктуризация:
 // const user = {
