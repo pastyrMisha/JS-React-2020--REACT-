@@ -25,6 +25,8 @@
     - npx webpack
     В папке dist появился файл main.js, там и есть настройки нашего слайдера и button.
     Можно взять файл webpack.config.js из папки с уроком про webpack (там есть важная вещь watch: true)
+    - ЕСЛИ БУДУТ ОШИБКИ ТИПА "Module not found: Error: Can't resolve 'core-js/modules/es.array.iterator.js'" -----
+    ----- ОБНОВИТЬ КОМАНДОЙ npm install --save core-js@^3
 */
 // import Slider, {button} from "./script";
 // const slider = new Slider(400, 300, 5);
