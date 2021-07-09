@@ -13,15 +13,36 @@ import './index.css';
 // )
 
 const Header = () => {
+  // const scr = '<script>alert("Error!")</script>'
+  // return <h2>{scr}</h2> 
+  // Не получится вставить вредоносный скрипт (!)
   return <h2>Hello World!</h2>
 }
 
 const Field = () => {
-  return <input type="text" placeholder="Type here" />
+  const holder = "Enter here";
+const styleField = {
+  width: "300px"
+}
+
+  return <input 
+              style={styleField}
+              type="text" 
+              placeholder= {holder} 
+              autoComplete="" 
+              className="first" 
+              htmlFor="" /> //как label for
 }
 
 const Btn = () => {
-  return <button/>
+  const text = "Log in";
+  const logged = true;
+  // const res = () => {
+  // return "Log in, please";
+  // }
+  // Нельзя поместить объект {} (!)
+  // const p = <p>Log in</p>
+  return <button>{/*p*//*res()*/logged ? "Enter" : text}</button>
 }
 
 const App = () => {
