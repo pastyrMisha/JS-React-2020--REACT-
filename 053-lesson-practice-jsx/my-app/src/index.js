@@ -6,8 +6,8 @@ import './index.css';
 function WhoAmI() {
   return (
     <React.Fragment>
-      <h1>My name is, surname — </h1>
-      <a href="">My profile</a>
+      {/* <h1>My name is, surname — </h1>
+      <a href="">My profile</a> */}
     </React.Fragment>
   )
 }
