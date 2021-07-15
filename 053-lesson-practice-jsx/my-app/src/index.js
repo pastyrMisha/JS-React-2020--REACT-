@@ -12,7 +12,6 @@ function WhoAmI() {
   )
 }
 
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
