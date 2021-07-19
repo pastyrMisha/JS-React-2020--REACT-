@@ -50,7 +50,7 @@ export default class PostListItem extends Component {
                             type="button"
                             className="btn-star btn-sm"
                             onClick={this.onImportant}>
-                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star-half"></i>
                             </button> 
                             <button 
                             type="button"
