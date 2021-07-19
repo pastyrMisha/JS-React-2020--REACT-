@@ -15,8 +15,8 @@ export default class PostListItem extends Component {
     }
 
     onImportant() {
-        this.setState(({like}) => ({
-            like: !like
+        this.setState(({important}) => ({
+            important: !important
         }))
     }
 
@@ -30,12 +30,13 @@ export default class PostListItem extends Component {
             const {label} = this.props;
             const {important, like} = this.state;
             let classNames = 'app-list-item d-flex justify-content-between';
+            
             if (important) {
-                classNames += ' important';
+                classNames +=' important';
             }
 
             if (like) {
-                classNames += ' like';
+                classNames +=' like';
             }
 
                 return (
@@ -59,7 +60,7 @@ export default class PostListItem extends Component {
                             </button> 
                             <i className="fa fa-heart"></i>
                         </div>
-                </div>
+                    </div>
                 )
     }
 }
