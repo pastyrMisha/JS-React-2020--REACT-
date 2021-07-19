@@ -21,8 +21,8 @@ export default class PostListItem extends Component {
     }
 
     onLike() {
-        this.setState(({important}) => ({
-            important: !important
+        this.setState(({like}) => ({
+            like: !like
         }))
     }
 
