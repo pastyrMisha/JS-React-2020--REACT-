@@ -68,6 +68,11 @@ onToogleLiked(id) {
         const old = data[index];
         const newItem = {...old, like: !old.like};
         
+        const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+
+        return {
+            data: newArr
+        }
     })
 }
 
@@ -86,9 +91,17 @@ addItem(body) {
 }
 
     render() {
+
+        const {data} = this.state;
+
+        const liked = data.filter(item => item.like).length;
+        const allPosts = data.length;
+
         return (
             <StyledAppBlock>
-            <AppHeader/>
+            <AppHeader
+            liked={liked}
+            allPosts={allPosts}/>
             <div className="search-panel d-flex">
                 <SearchPanel/>
                 <PostStatusFilter/>
