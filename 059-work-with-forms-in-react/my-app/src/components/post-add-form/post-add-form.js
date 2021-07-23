@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import './post-add-form.css';
 
-const PostAddForm = ({onAdd}) => {
+export default class PostAddForm extends Component {
+    constructor(props) {
+        super(props);
+    }
+render() {
     return (
         <div className="bottom-panel d-flex">
             <input
@@ -19,5 +23,4 @@ const PostAddForm = ({onAdd}) => {
         </div>
     )
 }
-
-export default PostAddForm;
+}
