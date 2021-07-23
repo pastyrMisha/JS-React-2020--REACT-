@@ -26,7 +26,8 @@ export default class App extends Component {
                 {label: 'Going to learn React', important: true, like: false, id: '1'},
                 {label: 'That is so good', important: false, like: false, id: '2'},
                 {label: 'I need a break...', important: false, like: false, id: '3'}
-             ]
+             ],
+             term : ''
         };
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
@@ -98,6 +99,16 @@ addItem(body) {
         return {
             data: newArr
         }
+    });
+}
+
+searchPost(items, term) {
+    if (term.length === 0) {
+        return items
+    }
+
+    return items.filter( (item) => {
+        return item.label.indexOf(term) > -1
     });
 }
 
