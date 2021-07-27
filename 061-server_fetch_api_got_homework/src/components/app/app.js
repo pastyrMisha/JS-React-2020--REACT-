@@ -1,29 +1,48 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
-// import styled from 'styled-components';
+import ErrorMessage from '../errorMessage';
+import styled from 'styled-components';
 
 
-// const ToogleButton = styled.button`
-//     color: #fff;
-//     background-color: blue;
-//     padding: 10px 20px;
-//     margin-bottom: 40px;
-//     outline: none;
-//     border: 3px solid transparent;
-//     border-radius: 0.25rem;
-// `;
+const ToogleButton = styled.button`
+    color: #fff;
+    background-color: blue;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+    outline: none;
+    border: 3px solid transparent;
+    border-radius: 0.25rem;
+`;
+
+export default class App extends Component {
+
+    state = {
+        ShowRandomChar: true,
+        error: false
+    }
+
+    toogleRandomChar = (state) => {
+        this.setState({
+                ShowRandomChar: !this.state.ShowRandomChar
+        });
+    }
 
 
 
-// const toogleChar = () => {
-//     console.log("fdf");
-// }
+    render () {
 
-const App = () => {
+        if (this.state.error) {
+            return <ErrorMessage/>
+        }
+
+      const char = this.state.ShowRandomChar ? <RandomChar/> : null;
+
+      
+
     return (
         <> 
             <Container>
@@ -32,14 +51,14 @@ const App = () => {
             <Container>
                 <Row>
                     <Col lg={{size: 5, offset: 0}}>
-                        <RandomChar/>
+                    {char}
                     </Col>
                 </Row>
-                {/* <Row>
+                <Row>
                 <Col lg={{size: 5, offset: 0}}>
-                <ToogleButton onClick={toogleChar}>Toogle random character</ToogleButton>
+                <ToogleButton onClick={this.toogleRandomChar}>Toogle random character</ToogleButton>
                 </Col>
-                </Row> */}
+                </Row>
                 <Row>
                     <Col md='6'>
                         <ItemList />
@@ -51,6 +70,5 @@ const App = () => {
             </Container>
         </>
     );
+    }
 };
-
-export default App;
