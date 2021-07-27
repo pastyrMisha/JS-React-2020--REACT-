@@ -22,14 +22,17 @@ componentDidMount() {
         })
 }
 
-renderItems(arr) {
+renderItem(arr) {
     return arr.map((item, i) => {
+        const {id} = item;
+        const label = this.props.renderItem(item);
+
         return (
             <li
-                key={i}
+                key={id}
                 className="list-group-item"
-                onClick={() => this.props.onCharSelected(41 + i)}>
-                {item.name}
+                onClick={() => this.props.onItemSelected(id)}>
+                {label}
             </li>
         )
     })
@@ -43,7 +46,7 @@ renderItems(arr) {
         if (!itemList) {
             return <Spinner/>
         }
-        const items = this.renderItems(itemList);
+        const items = this.renderItem(itemList);
 
         return (
             <ul className="item-list list-group">

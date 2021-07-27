@@ -19,7 +19,7 @@ componentDidMount() {
         })
 }
 
-renderItems(arr) {
+renderItem(arr) {
     return arr.map((item, i) => {
         return (
             <li
@@ -40,7 +40,7 @@ renderItems(arr) {
         if (!charList) {
             return <Spinner/>
         }
-        const items = this.renderItems(charList);
+        const items = this.renderItem(charList);
 
         return (
             <ul className="item-list list-group">
