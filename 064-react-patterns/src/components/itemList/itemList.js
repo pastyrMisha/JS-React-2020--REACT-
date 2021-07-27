@@ -23,7 +23,7 @@ componentDidMount() {
 }
 
 renderItem(arr) {
-    return arr.map((item, i) => {
+    return arr.map((item) => {
         const {id} = item;
         const label = this.props.renderItem(item);
 
@@ -31,7 +31,7 @@ renderItem(arr) {
             <li
                 key={id}
                 className="list-group-item"
-                onClick={() => this.props.onItemSelected(id)}>
+                onClick={ () => this.props.onItemSelected(id)}>
                 {label}
             </li>
         )
