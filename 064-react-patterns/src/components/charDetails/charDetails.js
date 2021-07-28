@@ -60,6 +60,7 @@ export default class CharDetails extends Component {
                    {
                        React.Children.map(this.props.children, (child) => {
                             return React.cloneElement(child, {char})
+                           
                        })
                    }
                 </ul>

@@ -27,7 +27,7 @@ renderItem(arr) {
         
         const {id} = item;
         const label = this.props.renderItem(item);
-        
+        console.log(item);
         return (
             <li
                 key={id}

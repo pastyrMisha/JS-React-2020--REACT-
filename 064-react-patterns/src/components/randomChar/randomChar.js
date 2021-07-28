@@ -21,6 +21,7 @@ export default class RandomChar extends Component {
 
     componentWillUnmount() {
         clearInterval(this.timerId);
+        
     }
 
 
