@@ -59,7 +59,6 @@ export default class CharDetails extends Component {
                 <ul className="list-group list-group-flush">
                    {
                        React.Children.map(this.props.children, (child) => {
-                           console.log({char});
                             return React.cloneElement(child, {char})
                        })
                    }
