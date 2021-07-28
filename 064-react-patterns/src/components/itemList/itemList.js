@@ -25,22 +25,20 @@ componentDidMount() {
 renderItem(arr) {
     return arr.map((item) => {
         
-        // const {id} = item;
+        const {id} = item;
         const label = this.props.renderItem(item);
-        console.log(41 + arr.indexOf(item));
         
         return (
             <li
-                key={41 + arr.indexOf(item) }
+                key={id}
                 className="list-group-item"
-                onClick={ () => this.props.onItemSelected(41 + arr.indexOf(item))}>
+                onClick={ () => this.props.onItemSelected(id)}>
                 {label}
             </li>
         )
         
     })
 }
-
 
     render() {
         
