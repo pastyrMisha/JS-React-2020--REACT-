@@ -11,7 +11,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
 //         return this.props.children
 //     }
 // }
-
 // ReactDOM.render(<Example>
 //     <h1>Hello</h1>
 // </Example>, document.getElementById('root'));
