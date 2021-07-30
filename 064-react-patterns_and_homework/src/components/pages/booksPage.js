@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ItemList from '../itemList';
-import CharDetails, {Field} from '../charDetails';
+import ItemDetails, {Field} from '../itemDetails';
 import ErrorMessage from '../errorMessage';
 import gotService from '../../services/gotService';
 import RowBlock from '../rowBlock';
@@ -39,16 +39,16 @@ export default class BooksPage extends Component {
             renderItem={({name, publisher}) => `${name} (${publisher})`}/>
         )
 
-        const charDetails = (
-            <CharDetails booksId={this.state.selectedBook}>
+        const itemDetails = (
+            <ItemDetails booksId={this.state.selectedBook}>
                 <Field field='publisher' label='Publisher'/>
                 <Field field='released' label='Released'/>
                  <Field field='numberOfPages' label='Number of pages'/>
-            </CharDetails>
+            </ItemDetails>
         )
 
         return (
-            <RowBlock left={itemList} right={charDetails}/>
+            <RowBlock left={itemList} right={itemDetails}/>
         )
     }
 }

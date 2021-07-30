@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './charDetails.css';
+import './itemDetails.css';
 import gotService from '../../services/gotService';
 
 const Field = ({item, field, label}) => {
@@ -14,7 +14,7 @@ const Field = ({item, field, label}) => {
 export {
     Field
 }
-export default class CharDetails extends Component {
+export default class ItemDetails extends Component {
 
     gotService = new gotService();
 

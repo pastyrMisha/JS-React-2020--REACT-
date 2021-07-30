@@ -3,11 +3,9 @@ import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
-import CharacterPage from '../characterPage';
+import {CharacterPage, BooksPage, HousePage} from '../pages';
 import styled from 'styled-components';
 import gotService from '../../services/gotService';
-import BooksPage from '../pages/booksPage';
-import HousePage from '../pages/housesPage';
 
 const ToogleButton = styled.button`
     color: #fff;
