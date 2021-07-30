@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 import gotService from '../../services/gotService';
+import BooksPage from '../pages/booksPage';
 
 const ToogleButton = styled.button`
     color: #fff;
@@ -69,17 +70,16 @@ componentDidCatch() {
                 </Row>
              <CharacterPage/>
              <Row>
-                <Col md='6'>
-                    <ItemList 
-                        onItemSelected={this.onItemSelected}
-                        getData={this.gotService.getAllBooks}
-                        renderItem={(item) => item.name}/>
-                        {/* renderItem={(item) => (<><span>{item.name}</span><button>Click me</button></>)}/> //С кнопкой*/}
-                </Col>
-                <Col md='6'>
-                    <CharDetails charId={this.state.selectedChar}/>
-                </Col>
+            
              </Row>
+             <BooksPage />
+
+
+
+
+
+
+
              <Row>
                 <Col md='6'>
                     <ItemList 

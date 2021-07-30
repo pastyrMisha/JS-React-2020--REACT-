@@ -41,10 +41,10 @@ export default class BooksPage extends Component {
 
         const charDetails = (
             <CharDetails charId={this.state.selectedBook}>
-                <Field field='gender' label='Gender'/>
-                <Field field='born' label='Born'/>
-                <Field field='died' label='Died'/>
-                <Field field='culture' label='Culture'/>
+                <Field field='name' label='Name'/>
+                <Field field='pages' label='Number of pages'/>
+                <Field field='publisher' label='Publisher'/>
+                <Field field='released' label='Released'/>
             </CharDetails>
         )
 
