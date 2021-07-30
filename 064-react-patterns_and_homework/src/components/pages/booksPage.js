@@ -10,7 +10,7 @@ export default class BooksPage extends Component {
     gotService = new gotService();
 
     state = {
-        selectedBook: 10,
+        selectedBook: 1,
         error: false
     }
 
@@ -28,6 +28,7 @@ export default class BooksPage extends Component {
 
     render () {
 
+
         if (this.state.error) {
             return <ErrorMessage/>
         }
@@ -40,7 +41,9 @@ export default class BooksPage extends Component {
         )
 
         const itemDetails = (
-            <ItemDetails booksId={this.state.selectedBook}>
+            <ItemDetails 
+            itemId={this.state.selectedBook}
+            getData={this.gotService.getBook}>
                 <Field field='publisher' label='Publisher'/>
                 <Field field='released' label='Released'/>
                  <Field field='numberOfPages' label='Number of pages'/>

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './itemDetails.css';
-import gotService from '../../services/gotService';
 
 const Field = ({item, field, label}) => {
     return (
@@ -16,68 +15,36 @@ export {
 }
 export default class ItemDetails extends Component {
 
-    gotService = new gotService();
-
     state = {
         item: null
     }
 
     componentDidMount() {
-        
-        this.updateChar();
-        this.updateBook();
-        this.updateHouse();
+      this.updateItem()
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.charId !== prevProps.charId && this.props.charId) {
-            this.updateChar();
-        }
-        if(this.props.booksId !== prevProps.booksId && this.props.booksId) {
-            this.updateBook();
-        }
-        if(this.props.houseId !== prevProps.houseId && this.props.houseId) {
-            this.updateHouse();
+        if(this.props.itemId !== prevProps.itemId) {
+            this.updateItem();
         }
     }
 
-    updateChar() {
-        const {charId} = this.props;
-        if(!charId) {
+    updateItem() {
+        const {itemId, getData} = this.props;
+
+        if(!itemId) {
             return;
         }
 
-        this.gotService.getCharacter(charId)
+        getData(itemId)
             .then((item) => {
-                this.setState({item})
+                
+                this.setState({
+                    item
+                })
             })
-
-    }
-
-    updateBook () {
-        const {booksId} = this.props;
-        if(!booksId) {
-            return;
-        }
-
-        this.gotService.getBook(booksId)
-            .then((item) => {
-                this.setState({item})
-            })
-
-    }
-
-    updateHouse () {
-        const {houseId} = this.props;
-        if(!houseId) {
-            return;
-        }
-
-        this.gotService.getHouse(houseId)
-            .then((item) => {
-                this.setState({item})
-            })
-
+           
+           
     }
 
     render() {

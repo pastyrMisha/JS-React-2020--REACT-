@@ -10,7 +10,7 @@ export default class HousePage extends Component {
     gotService = new gotService();
 
     state = {
-        selectedHouse: 131,
+        selectedHouse: 1,
         error: false
     }
 
@@ -40,7 +40,9 @@ export default class HousePage extends Component {
         )
 
         const itemDetails = (
-            <ItemDetails houseId={this.state.selectedHouse}>
+            <ItemDetails 
+            itemId={this.state.selectedHouse}
+            getData={this.gotService.getHouse}>
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>
                 <Field field='titles' label='Titles'/>
