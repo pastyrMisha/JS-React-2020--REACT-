@@ -6,7 +6,6 @@ import Spinner from '../spinner';
 
 export default class ItemList extends Component {
 
-
     state = {
         itemList: null
     }
@@ -20,19 +19,21 @@ componentDidMount() {
                 itemList
             })
         })
+       
 }
 
-renderItem(arr) {
+
+
+renderItems(arr) {
     return arr.map((item) => {
-        
         const {id} = item;
         const label = this.props.renderItem(item);
-        console.log(item);
+ 
         return (
             <li
                 key={id}
                 className="list-group-item"
-                onClick={ () => this.props.onItemSelected(id)}>
+                onClick={() => this.props.onItemSelected(id)}>
                 {label}
             </li>
         )
@@ -47,7 +48,7 @@ renderItem(arr) {
         if (!itemList) {
             return <Spinner/>
         }
-        const items = this.renderItem(itemList);
+        const items = this.renderItems(itemList);
         
         return (
             <ul className="item-list list-group">

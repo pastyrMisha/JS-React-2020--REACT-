@@ -5,18 +5,18 @@ import ErrorMessage from '../errorMessage';
 import gotService from '../../services/gotService';
 import RowBlock from '../rowBlock';
 
-export default class BooksPage extends Component {
+export default class HousePage extends Component {
 
     gotService = new gotService();
 
     state = {
-        selectedBook: 10,
+        selectedHouse: 131,
         error: false
     }
 
     onItemSelected = (id) => {
         this.setState({
-            selectedBook: id
+            selectedHouse: id
         }) 
     }
 
@@ -35,15 +35,16 @@ export default class BooksPage extends Component {
         const itemList = (
             <ItemList 
             onItemSelected={this.onItemSelected}
-            getData={this.gotService.getAllBooks}
-            renderItem={({name, publisher}) => `${name} (${publisher})`}/>
+            getData={this.gotService.getAllHouses}
+            renderItem={({name}) => `${name}`}/>
         )
 
         const charDetails = (
-            <CharDetails booksId={this.state.selectedBook}>
-                <Field field='publisher' label='Publisher'/>
-                <Field field='released' label='Released'/>
-                 <Field field='numberOfPages' label='Number of pages'/>
+            <CharDetails houseId={this.state.selectedHouse}>
+                <Field field='region' label='Region'/>
+                <Field field='words' label='Words'/>
+                <Field field='titles' label='Titles'/>
+                <Field field='ancestralWeapons' label='Ancestral weapons'/>
             </CharDetails>
         )
 

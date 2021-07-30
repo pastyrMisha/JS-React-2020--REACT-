@@ -14,6 +14,16 @@ export default class GotService {
         return await res.json();
     }
 
+    getAllCharacters = async () => {
+        const res = await this.getResource(`/characters?page=5&pageSize=10`);
+        return res.map(this._transformCharacter)
+    }
+     
+    getCharacter = async (id) => {
+        const character = await this.getResource(`/characters/${id}`);
+        return this._transformCharacter(character);
+    }
+
     getAllBooks = async () => {
         const res = await this.getResource(`/books/`);
         return res.map(this._transformBook)
@@ -24,19 +34,9 @@ export default class GotService {
         return this._transformBook(books);
     }
     
-    getAllCharacters = async () => {
-        const res = await this.getResource(`/characters?page=5&pageSize=10`);
-        return res.map(this._transformCharacter)
-    }
-     
-    getCharacter = async (id) => {
-        const character = await this.getResource(`/characters/${id}`);
-        return this._transformCharacter(character);
-    }
-    
     getAllHouses = async () => {
         const res = await this.getResource(`/houses/`);
-        return res.map(this._transformBook)
+        return res.map(this._transformHouse)
     }
     
     getHouse = async (id) => {
@@ -45,11 +45,11 @@ export default class GotService {
     }
 
     isSet(data) {
-        if (data) {
-            return data
-        } else {
-            return 'no data :('
-        }
+        if(!data || data.length === 1) {
+                return 'no data :('
+            } else {
+                return data
+            } 
     }
 
     _extractId = (item) => {

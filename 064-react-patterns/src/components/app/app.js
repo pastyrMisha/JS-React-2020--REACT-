@@ -5,10 +5,9 @@ import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
 import CharacterPage from '../characterPage';
 import styled from 'styled-components';
-import ItemList from '../itemList';
-import CharDetails from '../charDetails';
 import gotService from '../../services/gotService';
 import BooksPage from '../pages/booksPage';
+import HousePage from '../pages/housesPage';
 
 const ToogleButton = styled.button`
     color: #fff;
@@ -67,30 +66,10 @@ componentDidCatch() {
                 <Col lg={{size: 5, offset: 0}}>
                 <ToogleButton onClick={this.toogleRandomChar}>Toogle random character</ToogleButton>
                 </Col>
-                </Row>
-             <CharacterPage/>
-             <Row>
-            
-             </Row>
-             <BooksPage />
-
-
-
-
-
-
-
-             <Row>
-                <Col md='6'>
-                    <ItemList 
-                        onItemSelected={this.onItemSelected}
-                        getData={this.gotService.getAllHouses}
-                        renderItem={(item) => item.name}/>
-                </Col>
-                <Col md='6'>
-                    <CharDetails charId={this.state.selectedChar}/>
-                </Col>
-        </Row>
+                </Row>     
+                <CharacterPage />
+                <BooksPage />
+                <HousePage />
             </Container>
         </>
     );

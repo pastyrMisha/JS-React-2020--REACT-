@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import './charDetails.css';
 import gotService from '../../services/gotService';
 
-const Field = ({char, field, label}) => {
+const Field = ({item, field, label}) => {
     return (
         <li className="list-group-item d-flex justify-content-between">
             <span className="term">{label}</span>
-            <span>{char[field]}</span>
+            <span>{item[field]}</span>
         </li>
     )
 }
@@ -19,16 +19,25 @@ export default class CharDetails extends Component {
     gotService = new gotService();
 
     state = {
-        char: null
+        item: null
     }
 
     componentDidMount() {
+        
         this.updateChar();
+        this.updateBook();
+        this.updateHouse();
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.charId !== prevProps.charId) {
+        if(this.props.charId !== prevProps.charId && this.props.charId) {
             this.updateChar();
+        }
+        if(this.props.booksId !== prevProps.booksId && this.props.booksId) {
+            this.updateBook();
+        }
+        if(this.props.houseId !== prevProps.houseId && this.props.houseId) {
+            this.updateHouse();
         }
     }
 
@@ -39,19 +48,45 @@ export default class CharDetails extends Component {
         }
 
         this.gotService.getCharacter(charId)
-            .then((char) => {
-                this.setState({char})
+            .then((item) => {
+                this.setState({item})
+            })
+
+    }
+
+    updateBook () {
+        const {booksId} = this.props;
+        if(!booksId) {
+            return;
+        }
+
+        this.gotService.getBook(booksId)
+            .then((item) => {
+                this.setState({item})
+            })
+
+    }
+
+    updateHouse () {
+        const {houseId} = this.props;
+        if(!houseId) {
+            return;
+        }
+
+        this.gotService.getHouse(houseId)
+            .then((item) => {
+                this.setState({item})
             })
 
     }
 
     render() {
 
-        if(!this.state.char) {
+        if(!this.state.item) {
             return <span className='select-error'>Please select a character</span>
         }
-        const {char} = this.state;
-        const {name} = char;
+        const {item} = this.state;
+        const {name} = item;
 
         return (
             <div className="char-details rounded">
@@ -59,7 +94,7 @@ export default class CharDetails extends Component {
                 <ul className="list-group list-group-flush">
                    {
                        React.Children.map(this.props.children, (child) => {
-                            return React.cloneElement(child, {char})
+                            return React.cloneElement(child, {item})
                            
                        })
                    }
