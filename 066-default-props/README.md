@@ -1,12 +1,60 @@
-https://www.npmjs.com/package/react-router-dom
+Если в itemList.js {getData} не пришла в строке:
+```javascript
+const {getData} = this.props;
+```
+То мы устанавливаем свойства по умолчанию:
 
-npm install --save react-router-dom
+```javascript
+ItemList.defaultProps = {
+    onItemSelected: () => {}
+}
+```
+
+=================================================
+Для RandomChar и внутри второй вариант внутри самого компонента:
+
+```javascript
+RandomChar.defaultProps = {
+    interval: 15000
+}
+
+  static defaultProps = {
+        interval: 15000
+    }
+```
 
 
-<!-- <Route path='/books/:id' render={(match, location, history) => {return <BooksItem/>}} /> -->
+=======================================================
+Проверка на тип приходящих данных, где:
 
-match - объект с данными о том, как именно path совпал с текущем адресом и в нем же есть параметр :id
+props - список всех наших props, которые приходят в компонент;
+propName - это имя какой-то определенной property
+componentName - имя самого компонента (RandomChar)
 
-location - состояние и положение роутера в текущий момент
+```javascript
+RandomChar.propTypes ={
+    interval: (props, propName, componentName) => {
+        const value = props[propName];
+        
+        if (typeof value === 'number' && !isNaN(value)) {
+            return null
+        }
+        return new TypeError(`${componentName}: ${propName} must be a number`) 
+    }
+}
+```
 
-history - API для организации перехода между страницами
+===============================================================
+Готовая библиотека на проверку типов данных:
+https://ru.reactjs.org/docs/typechecking-with-proptypes.html
+
+npm install prop-types
+```javascript
+import PropTypes from 'prop-types';
+
+RandomChar.propTypes ={
+    interval: PropTypes.number
+}
+
+// Example: getData: PropTypes.arrayOf(PropTypes.object)
+```

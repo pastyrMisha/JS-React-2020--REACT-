@@ -43,7 +43,7 @@ componentDidCatch() {
 
 
     render () {
-      const char = this.state.ShowRandomChar ? <RandomChar/> : null;
+      const char = this.state.ShowRandomChar ? <RandomChar interval={1500}/> : null;
 
       if (this.state.error) {
         return <ErrorMessage/>
