@@ -5,12 +5,12 @@ import ErrorMessage from '../errorMessage';
 import gotService from '../../services/gotService';
 import RowBlock from '../rowBlock';
 
-export default class HousePage extends Component {
+export default class HousesPage extends Component {
 
     gotService = new gotService();
 
     state = {
-        selectedHouse: 1,
+        selectedHouse: null,
         error: false
     }
 
