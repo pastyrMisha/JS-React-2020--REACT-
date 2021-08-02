@@ -20,7 +20,6 @@ class BooksPage extends Component {
 
     render () {
 
-
         if (this.state.error) {
             return <ErrorMessage/>
         }
@@ -31,7 +30,8 @@ class BooksPage extends Component {
                     this.props.history.push(itemId)
                 }}
                 getData={this.gotService.getAllBooks}
-                renderItem={({name, publisher}) => `${name} (${publisher})`}/>
+                renderItem={({name, publisher}) => `${name} (${publisher})`}
+            />
         )
     }
 }

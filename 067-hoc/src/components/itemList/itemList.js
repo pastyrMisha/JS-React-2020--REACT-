@@ -13,7 +13,7 @@ renderItems(arr) {
 
 
         const {id} = item;
-
+    
         const label = this.props.renderItem(item);
 
         return (
@@ -29,7 +29,8 @@ renderItems(arr) {
 }
 
     render() {
-        const {data} = this.props ;
+        const {data} = this.props;
+   
         const items = this.renderItems(data);
 
 
@@ -86,4 +87,5 @@ const withData = (View, getData) => {
     }
 }
 const {getAllCharacters} = new gotService();
+
 export default withData(ItemList, getAllCharacters);
