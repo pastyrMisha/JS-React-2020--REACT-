@@ -6,6 +6,7 @@ import ItemDetails, {Field} from '../itemDetails';
 export default class CharacterItem extends Component {
 
     gotService = new gotService();
+    
     render () {
         return (
             <ItemDetails 
