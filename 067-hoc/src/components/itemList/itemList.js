@@ -6,49 +6,44 @@ import gotService from '../../services/gotService';
 
 
 
-class ItemList extends Component {
+const ItemList = () => {
 
-renderItems(arr) {
-    return arr.map((item) => {
+    return class extends Component {
+
+        renderItems(arr) {
+            return arr.map((item) => {
 
 
-        const {id} = item;
+                const {id} = item;
+            
+                const label = this.props.renderItem(item);
+
+                return (
+                    <li
+                        key={id}
+                        className="list-group-item"
+                        onClick={() => this.props.onItemSelected(id)}>
+                        {label}
+                    </li>
+                )
+                
+            })
+        }
+
+        render() {
+            const {data} = this.props;
     
-        const label = this.props.renderItem(item);
-
-        return (
-            <li
-                key={id}
-                className="list-group-item"
-                onClick={() => this.props.onItemSelected(id)}>
-                {label}
-            </li>
-        )
-        
-    })
-}
-
-    render() {
-        const {data} = this.props;
-   
-        const items = this.renderItems(data);
+            const items = this.renderItems(data);
 
 
-        return (
-            <ul className="item-list list-group">
-                {items}
-            </ul>
-        );
+            return (
+                <ul className="item-list list-group">
+                    {items}
+                </ul>
+            );
+        }
     }
 }
-
-// const f = (a) => {
-//     console.log(a);
-//     return (b) => {
-//         console.log(a + b);
-//     }
-// }
-// f(1)(2);
 
 const withData = (View, getData) => {
     return class extends Component {
@@ -62,30 +57,30 @@ const withData = (View, getData) => {
         }
         
         static propTypes = {
-            onItemSelected: PropTypes.func,
-            // getData: PropTypes.arrayOf(PropTypes.object)
+            onItemSelected: PropTypes.func
         }
     
-    componentDidMount() {
-    
-       getData()
-            .then( (data) => {
-                this.setState({
-                    data
-                })
-            })   
-    }
-    render() {
-        const {data} = this.state;
-        
+        componentDidMount() {
+        getData()
+                .then( (data) => {
+                    this.setState({
+                        data
+                    })
+                })   
+        }
 
-        if (!data) {
-            return <Spinner/>
+
+        render() {
+            const {data} = this.state;
+            
+
+            if (!data) {
+                return <Spinner/>
+            }
+            return <View {...this.props} data={data}/>
         }
-        return <View {...this.props} data={data}/>
-    }
     }
 }
-const {getAllCharacters} = new gotService();
+const {getAllBooks} = new gotService();
 
-export default withData(ItemList, getAllCharacters);
+export default withData(ItemList, getAllBooks);

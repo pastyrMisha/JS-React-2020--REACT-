@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import gotService from '../../services/gotService';
 import ItemDetails, {Field} from '../itemDetails';
 
@@ -14,7 +13,7 @@ export default class BooksItem extends Component {
             getData={this.gotService.getBook}>
                 <Field field='publisher' label='Publisher'/>
                 <Field field='released' label='Released'/>
-                 <Field field='numberOfPages' label='Number of pages'/>
+                <Field field='numberOfPages' label='Number of pages'/>
             </ItemDetails>
         )
     }

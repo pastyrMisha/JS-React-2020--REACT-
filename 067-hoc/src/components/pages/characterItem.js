@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-
 import gotService from '../../services/gotService';
 import ItemDetails, {Field} from '../itemDetails';
 
 export default class CharacterItem extends Component {
 
     gotService = new gotService();
-    
+
     render () {
         return (
             <ItemDetails 

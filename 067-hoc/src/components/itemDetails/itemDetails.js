@@ -43,12 +43,11 @@ export default class ItemDetails extends Component {
                     item
                 })
             })
-           
-           
     }
 
-    render() {
 
+    render() {
+        
         if(!this.state.item) {
             return <span className='select-error'>Please select item in the list</span>
         }
@@ -62,7 +61,6 @@ export default class ItemDetails extends Component {
                    {
                        React.Children.map(this.props.children, (child) => {
                             return React.cloneElement(child, {item})
-                           
                        })
                    }
                 </ul>

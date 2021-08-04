@@ -14,9 +14,6 @@ export default class RandomChar extends Component {
        loading: true,
        error: false
     }
-    // static defaultProps = {
-    //     interval: 15000
-    // }
 
     componentDidMount() {
         this.updateChar();
@@ -35,7 +32,7 @@ export default class RandomChar extends Component {
         })
     }
 
-    onError = (err) => {
+    onError = () => {
         this.setState({
             error: true,
             loading: false
@@ -72,14 +69,6 @@ RandomChar.defaultProps = {
 }
 
 RandomChar.propTypes ={
-    // interval: (props, propName, componentName) => {
-    //     const value = props[propName];
-        
-    //     if (typeof value === 'number' && !isNaN(value)) {
-    //         return null
-    //     }
-    //     return new TypeError(`${componentName}: ${propName} must be a number`) 
-    // }
     interval: PropTypes.number
 }
 

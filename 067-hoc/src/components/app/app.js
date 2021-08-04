@@ -3,7 +3,7 @@ import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
-import {CharacterPage, BooksPage, HousesPage, BooksItem} from '../pages';
+import {CharacterPage, BooksPage, HousesPage, CharacterItem, BooksItem, HouseItem} from '../pages';
 import styled from 'styled-components';
 import gotService from '../../services/gotService';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
@@ -69,13 +69,28 @@ componentDidCatch() {
                     </Row>
                     <Route path='/' exact component={() => <h1>Welcome to GOT DB</h1>}/> 
                     <Route path='/characters' component={CharacterPage}/> 
-                    <Route path='/houses' component={HousesPage}/> 
                     <Route path='/books' exact component={BooksPage}/> 
+                    <Route path='/houses' component={HousesPage}/> 
+                    <Route path='/character/:id' render={
+                        ({match}) => {
+                            const {id} = match.params;
+
+                            return <CharacterItem charId={id}/>
+                        }
+                    } />
                     <Route path='/books/:id' render={
                         ({match}) => {
                             const {id} = match.params;
 
                             return <BooksItem bookId={id}/>
+                        }
+                    } />
+
+                    <Route path='/houses/:id' render={
+                        ({match}) => {
+                            const {id} = match.params;
+
+                            return <HouseItem houseId={id}/>
                         }
                     } />
                 </Container>
