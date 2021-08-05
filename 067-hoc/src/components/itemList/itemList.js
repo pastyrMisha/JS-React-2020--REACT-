@@ -61,6 +61,7 @@ const withData = (View, getData) => {
         }
     
         componentDidMount() {
+
         getData()
                 .then( (data) => {
                     this.setState({
@@ -82,4 +83,4 @@ const withData = (View, getData) => {
 }
 const {getAllBooks} = new gotService();
 
-export default withData(ItemList, getAllBooks);
+export default withData(ItemList(), getAllBooks);
