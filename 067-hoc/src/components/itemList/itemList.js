@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './itemList.css';
-import Spinner from '../spinner';
-import PropTypes from 'prop-types';
-import gotService from '../../services/gotService';
+// import Spinner from '../spinner';
+// import PropTypes from 'prop-types';
+// import gotService from '../../services/gotService';
 
 
 
@@ -45,42 +45,7 @@ const ItemList = () => {
     }
 }
 
-const withData = (View, getData) => {
-    return class extends Component {
 
-        state = {
-            data: null
-        }
-    
-        static defaultProps = {
-            onItemSelected: () => {}
-        }
-        
-        static propTypes = {
-            onItemSelected: PropTypes.func
-        }
-    
-        componentDidMount() {
+// const {getAllBooks} = new gotService();
 
-        getData()
-                .then( (data) => {
-                    this.setState({
-                        data
-                    })
-                })   
-        }
-
-        render() {
-            const {data} = this.state;
-            
-
-            if (!data) {
-                return <Spinner/>
-            }
-            return <View {...this.props} data={data}/>
-        }
-    }
-}
-const {getAllBooks} = new gotService();
-
-export default withData(ItemList(), getAllBooks);
+export default ItemList;
