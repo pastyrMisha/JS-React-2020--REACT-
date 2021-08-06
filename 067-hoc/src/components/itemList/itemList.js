@@ -6,9 +6,7 @@ import './itemList.css';
 
 
 
-const ItemList = () => {
-
-    return class extends Component {
+class ItemList extends Component {
 
         renderItems(arr) {
             return arr.map((item) => {
@@ -38,14 +36,11 @@ const ItemList = () => {
 
             return (
                 <ul className="item-list list-group">
-                    {items}
+                   {items}
                 </ul>
             );
         }
     }
-}
 
-
-// const {getAllBooks} = new gotService();
 
 export default ItemList;
