@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Spinner from '../spinner';
 import PropTypes from 'prop-types';
+
+
 // import gotService from '../../services/gotService';
 
 
@@ -36,6 +38,7 @@ const withData = (View, getData) => {
             if (!data) {
                 return <Spinner/>
             }
+
             return <View {...this.props} data={data}/>
         }
     }

@@ -75,7 +75,6 @@ RandomChar.propTypes ={
 
 
 const View = ({char}) => {
-
     const {name, gender, born, died, culture} = char;
 
     return (
