@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ItemList from '../itemList';
 import ErrorMessage from '../errorMessage';
 import gotService from '../../services/gotService';
@@ -26,11 +26,11 @@ class HousesPage extends Component {
 
         return (
             <ItemList 
-            onItemSelected={(itemId) => {
-                this.props.history.push(itemId)
-            }}
-            getData={this.gotService.getAllHouses}
-            renderItem={({name}) => `${name}`}/>
+                onItemSelected={(itemId) => {
+                    this.props.history.push(itemId)
+                }}
+                getData={this.gotService.getAllHouses}
+                renderItem={({name}) => `${name}`}/>
         )
     }
 }

@@ -17,15 +17,14 @@ const ToogleButton = styled.button`
     border: 3px solid transparent;
     border-radius: 0.25rem;
 `;
-
 export default class App extends Component {
 
-    gotService = new gotService();
+gotService = new gotService();
 
-    state = {
-        ShowRandomChar: true,
-        error: false
-    }
+state = {
+    ShowRandomChar: true,
+    error: false
+}
 
 componentDidCatch() {
     this.setState({
@@ -33,24 +32,20 @@ componentDidCatch() {
     })
 }
 
-    toogleRandomChar = (state) => {
+toogleRandomChar = (state) => {
         this.setState({
                 ShowRandomChar: !this.state.ShowRandomChar
         });
-    }
+}
 
-
-
-
-    render () {
+render () {
       const char = this.state.ShowRandomChar ? <RandomChar interval={1500}/> : null;
 
       if (this.state.error) {
         return <ErrorMessage/>
-    }
+}
 
-
-    return (
+return (
         <Router>
             <div className="app"> 
                 <Container>
@@ -68,10 +63,11 @@ componentDidCatch() {
                     </Col>
                     </Row>
                     <Route path='/' exact component={() => <h1>Welcome to GOT DB</h1>}/> 
-                    <Route path='/characters' component={CharacterPage}/> 
+                    <Route path='/characters' exact component={CharacterPage}/> 
                     <Route path='/books' exact component={BooksPage}/> 
-                    <Route path='/houses' component={HousesPage}/> 
-                    <Route path='/character/:id' render={
+                    <Route path='/houses' exact component={HousesPage}/> 
+
+                    <Route path='/characters/:id' render={
                         ({match}) => {
                             const {id} = match.params;
 

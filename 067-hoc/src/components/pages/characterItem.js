@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import gotService from '../../services/gotService';
-import ItemDetails, {Field} from '../itemDetails';
+import ItemDetails, { Field } from '../itemDetails';
 
 export default class CharacterItem extends Component {
 
@@ -9,7 +9,7 @@ export default class CharacterItem extends Component {
     render () {
         return (
             <ItemDetails 
-            itemId={this.state.charId}
+            itemId={this.props.charId}
             getData={this.gotService.getCharacter}>
                 <Field field='gender' label='Gender'/>
                 <Field field='born' label='Born'/>
