@@ -9,7 +9,7 @@ export default class HouseItem extends Component {
     render () {
         return (
             <ItemDetails 
-            itemId={this.state.houseId}
+            itemId={this.props.houseId}
             getData={this.gotService.getHouse}>
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>

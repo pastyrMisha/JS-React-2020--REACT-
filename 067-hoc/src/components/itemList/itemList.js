@@ -7,8 +7,8 @@ import withData from '../withData/withData';
 
 
 
-const ItemList = () =>  {
-    return class extends Component {
+class ItemList extends Component {
+    
         renderItems(arr) {
             return arr.map((item) => {
 
@@ -30,18 +30,19 @@ const ItemList = () =>  {
         }
 
         render() {
+
             const {data} = this.props;
     
             const items = this.renderItems(data);
 
-
             return (
+                
                 <ul className="item-list list-group">
                    {items}
                 </ul>
             );
         }
     }
-}
+
 
 export default withData(ItemList);
