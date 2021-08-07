@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './itemList.css';
+import withData from '../withData/withData';
 // import Spinner from '../spinner';
 // import PropTypes from 'prop-types';
 // import gotService from '../../services/gotService';
 
 
 
-class ItemList extends Component {
-
+const ItemList = () =>  {
+    return class extends Component {
         renderItems(arr) {
             return arr.map((item) => {
 
@@ -41,6 +42,6 @@ class ItemList extends Component {
             );
         }
     }
+}
 
-
-export default ItemList;
+export default withData(ItemList);

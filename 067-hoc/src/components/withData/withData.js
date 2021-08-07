@@ -1,46 +1,47 @@
-// import React, {Component} from 'react';
-// import Spinner from '../spinner';
-// import PropTypes from 'prop-types';
-// import ItemList from '../itemList';
+import React, {Component} from 'react';
+import Spinner from '../spinner';
+import PropTypes from 'prop-types';
 
 
 
-// const withData = (View, getData) => {
-//     return class extends Component {
 
-//         state = {
-//             data: null
-//         }
+const withData = (View, getData) => {
     
-//         static defaultProps = {
-//             onItemSelected: () => {}
-//         }
+    return class extends Component {
+
+        state = {
+            data: null
+        }
+    
+        static defaultProps = {
+            onItemSelected: () => {}
+        }
         
-//         static propTypes = {
-//             onItemSelected: PropTypes.func
-//         }
+        static propTypes = {
+            onItemSelected: PropTypes.func
+        }
     
-//         componentDidMount() {
+        componentDidMount() {
 
-//         getData()
-//                 .then( (data) => {
-//                     this.setState({
-//                         data
-//                     })
-//                 })   
-//         }
+        getData()
+                .then( (data) => {
+                    this.setState({
+                        data
+                    })
+                })   
+        }
 
-//         render() {
-//             const {data} = this.state;
+        render() {
+            const {data} = this.state;
             
 
-//             if (!data) {
-//                 return <Spinner/>
-//             }
+            if (!data) {
+                return <Spinner/>
+            }
 
-//             return <View {...this.props} data={data}/>
-//         }
-//     }
-// }
+            return <View {...this.props} data={data}/>
+        }
+    }
+}
 
-// export default withData(ItemList);
+export default withData;
