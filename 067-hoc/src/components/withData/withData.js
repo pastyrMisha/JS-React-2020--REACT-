@@ -3,8 +3,6 @@ import Spinner from '../spinner';
 import PropTypes from 'prop-types';
 
 
-
-
 const withData = (View) => {
     
     
