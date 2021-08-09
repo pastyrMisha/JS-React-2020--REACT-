@@ -69,4 +69,5 @@ export default class ItemDetails extends Component {
     }
 }
 
+
 //  React.Children.map – встроенный в реакт метод, похожий на map, но как child может прийти все что угодно (объект, массив, ф-ия и т.д.)
