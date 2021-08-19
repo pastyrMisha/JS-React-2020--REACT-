@@ -7,7 +7,7 @@ import {CharacterPage, BooksPage, HousesPage, CharacterItem, BooksItem, HouseIte
 import styled from 'styled-components';
 import gotService from '../../services/gotService';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Hook from '../hook/hook';
+// import Hook from '../hook/hook';
 
 const ToogleButton = styled.button`
     color: #fff;
@@ -91,9 +91,9 @@ return (
                         }
                     } />
                 </Container>
-                <Container>
+                {/* <Container>
                     <Hook/>
-                </Container>
+                </Container> */}
             </div>
         </Router>
     );

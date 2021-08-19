@@ -1,23 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './itemList.css';
-import withData from '../withData/withData';
+import Spinner from '../spinner';
 
 
-class ItemList extends Component {
+function ItemList({getData, onItemSelected, renderItem}) {
+
+    const [itemList, updateList] = useState([]);
     
-        renderItems(arr) {
-            return arr.map((item) => {
+    useEffect(() => {
+        getData()
+                .then((data) => {
+                    updateList(data)
+                })
+    }, [])
 
+    function renderItems(arr) {
+
+            return arr.map((item) => {
 
                 const {id} = item;
             
-                const label = this.props.renderItem(item);
+                const label = renderItem(item);
 
                 return (
                     <li
                         key={id}
                         className="list-group-item"
-                        onClick={() => this.props.onItemSelected(id)}>
+                        onClick={() => onItemSelected(id)}>
                         {label}
                     </li>
                 )
@@ -25,20 +34,17 @@ class ItemList extends Component {
             })
         }
 
-        render() {
-
-            const {data} = this.props;
-    
-            const items = this.renderItems(data);
+        if (!itemList) {
+            return <Spinner/>
+        }
+        
+        const items = renderItems(itemList);
 
             return (
-                
                 <ul className="item-list list-group">
                    {items}
                 </ul>
-            );
-        }
+            ); 
     }
 
-
-export default withData(ItemList);
+export default ItemList;
