@@ -46,7 +46,7 @@ const reducer = (state = 0, action) => {
         return state;
   }
 }
-```javascript
+
 const store = createStore(reducer);
 ```
 // let state = reducer(undefined, {}); // //- в store уже есть эта переменная. Там создан store, который содержит в себе и reducer и состояния state.
