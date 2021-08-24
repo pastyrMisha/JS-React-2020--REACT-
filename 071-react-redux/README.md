@@ -1,80 +1,53 @@
 ```javascript
-// const initialState = 0;
-
-// const reducer = (state, action) => {
-//   if(action.type === 'INC') {
-//     return state + 1;
-//   }
-//   return 0;
-// }
-
-// let state = reducer(initialState, {type: 'INC'});
-// console.log(state);
-// state = reducer(state, {type: 'INC'});
-// console.log(state);
-
-
-
-
-// const reducer = (state = 0, action) => {
-//   switch (action.type) {
-//     case 'INC':
-//         return state + 1;
-//     default:
-//         return state;
-//   }
-// }
-
-// let state = reducer(undefined, {});
-
-// state = reducer(state, {type: 'INC'});
-// console.log(state);
-// state = reducer(state, {type: 'INC'});
-// console.log(state);
-
-
-```
-// //REDUX:
-```javascript
-import {createStore} from 'redux';
-
-const reducer = (state = 0, action) => {
-  switch (action.type) {
-    case 'INC':
-        return state + 1;
-    default:
-        return state;
-  }
-}
+import {createStore, bindActionCreators} from 'redux';
+import reducer from './reducer';
+// import {inc, dec, rnd} from './actions'; //Упростим:
+import * as actions from './actions';
 
 const store = createStore(reducer);
-```
-// let state = reducer(undefined, {}); // //- в store уже есть эта переменная. Там создан store, который содержит в себе и reducer и состояния state.
-// console.log(store.getState());
+const {dispatch} = store;
 
-// store.dispatch({type: 'INC'}) // //- нужен,чтобы запустить reducer с тем state, который есть у нас в store и с тем action, который мы ему передали.
-```javascript
-// console.log(store.getState());
-// store.dispatch({type: 'INC'})
-// console.log(store.getState());
-// store.dispatch({type: 'INC'})
-// console.log(store.getState());
+// const bindActionCreator = (creator, dispatch) => (...args) => {
+//     dispatch(creator(...args));
+// }
+// const incDispatch = bindActionCreator(inc, dispatch);
+// const decDispatch = bindActionCreator(dec, dispatch);
+// const rndDispatch = bindActionCreator(rnd, dispatch);
+// //Написали втроенную ф-ию redux руками, а теперь используем bindActionCreators:
+// const incDispatch = bindActionCreators(inc, dispatch);
+// const decDispatch = bindActionCreators(dec, dispatch);
+// const rndDispatch = bindActionCreators(rnd, dispatch);
 
-store.subscribe(() => {
-    console.log(store.getState());
-})
-```
-// //- ф-ия subscribe это ф-ия подписки на store. Каждый раз, когда изменяется store, то будет вызываться callback-функция внутри (console.log(store.getState()) 1, 2 и 3)
-```javascript
-store.dispatch({type: 'INC'});
-store.dispatch({type: 'INC'});
-store.dispatch({type: 'INC'});
-```
-```javascript
-// let state = reducer(undefined, {});
+// actions = {
+//     inc: inc,
+//     dec: dec,
+//     rnd: rnd
+// }
 
-// state = reducer(state, {type: 'INC'});
-// console.log(state);
-// state = reducer(state, {type: 'INC'});
-// console.log(state);
+const {inc, dec, rnd} = bindActionCreators(actions, dispatch);
+
+// const {incDispatch, decDispatch, rndDispatch} = bindActionCreators(
+//     {
+//         incDispatch: inc,
+//         decDispatch: dec,
+//         rndDispatch: rnd
+//     }
+//     , dispatch);
+// const decDispatch = bindActionCreators(dec, dispatch);
+// const rndDispatch = bindActionCreators(rnd, dispatch);
+
+document.getElementById('inc').addEventListener('click', inc);
+
+document.getElementById('dec').addEventListener('click', dec);
+
+document.getElementById('rnd').addEventListener('click', () => {
+    const value =  Math.floor(Math.random() * 10);
+    rnd(value); 
+});
+
+const update = () => {
+    document.getElementById('counter').textContent = store.getState();
+}
+
+store.subscribe(update);
 ```
