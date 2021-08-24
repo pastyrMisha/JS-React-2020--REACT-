@@ -1,50 +1,40 @@
-import {createStore} from 'redux';
-
-const reducer = (state = 0, action) => {
-  switch (action.type) {
-    case 'INC':
-        return state + 1;
-    case 'DEC':
-        return state - 1;
-    case 'RND':
-        return state + action.value;
-    default:
-        return state;
-  }
-}
-
-// const inc = () => {
-//     return {
-//         type: 'INC'
-//     }
-// }
-// - ф-ия action creater, она создает объект, кторый мы передаем во внутрь dispatch, можно еще короче:
-const inc = () => ({type: 'INC'});
-const dec = () => ({type: 'DEC'});
-const rnd = (value) => ({type: 'RND', value});
-
+import {createStore, bindActionCreators} from 'redux';
+import reducer from './reducer';
+import {inc, dec, rnd} from './actions';
 
 const store = createStore(reducer);
+const {dispatch} = store;
 
-document.getElementById('inc').addEventListener('click', () => {
-    store.dispatch(inc()) 
-});
-// document.getElementById('dec').addEventListener('click', () => {
-//     store.dispatch({type: 'DEC'}) 
-// });
-document.getElementById('dec').addEventListener('click', () => {
-    store.dispatch(dec()) 
-});
+// const bindActionCreator = (creator, dispatch) => (...args) => {
+//     dispatch(creator(...args));
+// }
+// const incDispatch = bindActionCreator(inc, dispatch);
+// const decDispatch = bindActionCreator(dec, dispatch);
+// const rndDispatch = bindActionCreator(rnd, dispatch);
+// //Написали втроенную ф-ию redux руками, а теперь используем bindActionCreators:
+// const incDispatch = bindActionCreators(inc, dispatch);
+// const decDispatch = bindActionCreators(dec, dispatch);
+// const rndDispatch = bindActionCreators(rnd, dispatch);
 
-// document.getElementById('rnd').addEventListener('click', () => {
-//     const value =  Math.floor(Math.random() * 10);
-//     store.dispatch({type: 'RND', value}) 
-// });
+
+
+const incDispatch = bindActionCreators(
+    {
+        incDispatch: inc;
+        
+    }
+);
+// const decDispatch = bindActionCreators(dec, dispatch);
+// const rndDispatch = bindActionCreators(rnd, dispatch);
+
+document.getElementById('inc').addEventListener('click', incDispatch);
+
+document.getElementById('dec').addEventListener('click', decDispatch);
+
 document.getElementById('rnd').addEventListener('click', () => {
     const value =  Math.floor(Math.random() * 10);
-    store.dispatch(rnd(value)); 
+    rndDispatch(value); 
 });
-
 
 const update = () => {
     document.getElementById('counter').textContent = store.getState();
