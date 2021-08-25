@@ -6,11 +6,8 @@ import MyContext from './components/Context';
 function App() {
   return (
     <div className="App">
-      <MyContext.Provider value={{
-          name: 'Ivan',
-          age: 30
-      }}>
-          <Wrapper/>
+      <MyContext.Provider value={'Ivan'}>
+        <Wrapper/>
       </MyContext.Provider>
     </div>
   );
