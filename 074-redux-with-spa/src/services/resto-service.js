@@ -1,5 +1,5 @@
 export default class RestoService {
-    url = 'http://localhost:3004/menu'
+    url = 'http://localhost:3001/menu'
 
     getMenuItems = async () => {
         const response = await fetch(this.url);
