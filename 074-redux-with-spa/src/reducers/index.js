@@ -1,12 +1,20 @@
 const initialState = {
-    menu: []
+    menu: [],
+    loading: true
 }
 
 const reducer = (state = initialState, action) => {
+    console.log(state);
     switch (action.type) {
-        case 'MENU_lOADED':
+        case 'MENU_LOADED':
             return {
-                menu: action.payload
+                menu: action.payload,
+                loading: false
+            };
+        case 'MENU_REQUESTED':
+            return {
+                menu: state.menu,
+                loading: true
             };
         default:
             return state;
@@ -14,3 +22,6 @@ const reducer = (state = initialState, action) => {
 }
 
 export default reducer;
+
+
+//case Запрос, Успех, Ошибка - REQUEST, CONFIRM, ERROR

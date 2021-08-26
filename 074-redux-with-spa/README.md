@@ -1,9 +1,33 @@
-https://www.npmjs.com/package/json-server
 
-Установить json-server глобально:
+```javascript
+setState
 
-npm i json-server -g
+{a: 0, b: 0}
 
-Запуск на определенном порте:
+setState({ a: 500});
 
-json-server --watch db.json --port 3004
+// {a: 500, b: 0};
+
+```
+reducer:
+```javascript
+{a: 0, b: 0};
+
+const reducer = (state, action) => {
+    return { a: 500};
+};
+
+// {a: 500};
+```
+```javascript
+{a: 0, b: 0};
+
+const reducer = (state, action) => {
+    return { a: 500, b: state.b};
+};
+
+// {a: 500, b: 0};
+```
+
+про actions:
+case 1 Запрос, case 2 Успех, case 3 Ошибка - REQUEST, CONFIRM, ERROR
