@@ -21,9 +21,6 @@ const CartTable = ({items, deleteFromCart}) => {
                         )
                     })
                 }
-
-
-                
             </div>
         </>
     );
