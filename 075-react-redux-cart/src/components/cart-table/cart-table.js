@@ -40,7 +40,7 @@ const mapDispatchToProps = () => {
     //         console.log(`Удалили ${id}`);
     //     }
     // }
-    deleteFromCart 
+    deleteFromCart
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartTable);
