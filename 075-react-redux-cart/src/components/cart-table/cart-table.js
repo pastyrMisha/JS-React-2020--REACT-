@@ -31,7 +31,7 @@ const mapStateToProps = ({items}) => {
         items
     }
 };
-const mapDispatchToProps = () => {
+const mapDispatchToProps = {
     // return {
     //     onDelete: (id) => {
     //         console.log(`Удалили ${id}`);
