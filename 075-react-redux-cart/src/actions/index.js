@@ -18,13 +18,6 @@ const addedToCart = (id) => {
     };
 };
 
-const addedToTotal = (price) => {
-    return {
-        type: 'ITEM_ADD_TO_TOTAL',
-        payload: price
-    };
-};
-
 const deleteFromCart = (id) => {
     return {
         type: 'ITEM_REMOVE_FROM_CART',
@@ -36,6 +29,5 @@ export {
     menuLoaded,
     menuRequested,
     addedToCart,
-    deleteFromCart,
-    addedToTotal
+    deleteFromCart
 };

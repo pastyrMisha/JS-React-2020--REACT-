@@ -3,13 +3,26 @@ import {MainPage, CartPage} from '../pages';
 import AppHeader from '../app-header';
 import {Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
-// import {addedToCart} from '../../actions';
 import Background from './food-bg.jpg';
 
 
 const App = ({items}) => {
 
+  
+        
+// for (let i = 0; i < items.length; i++) {
+//     console.log(items[i].price);
+// }
+    
+
+
+// arr.forEach(element => {
+//     return console.log(element.price);
+// });
+    
 console.log({items});
+//  console.log(item.price);
+
 //     items.map(element => {
 //         console.log(element.price);
 // });
@@ -45,12 +58,6 @@ const mapStateToProps = ({items}) => {
         items
     }
 };
-
-// const mapDispatchToProps = {
-//     addedToCart
-// };
-
-
 
 export default connect(mapStateToProps)(App);
 // export default App;

@@ -22,6 +22,7 @@ const reducer = (state = initialState, action) => {
         case 'ITEM_ADD_TO_CART':
             const id = action.payload;
             const item = state.menu.find(item => item.id === id);
+            
             const newItem = {
                 title: item.title,
                 price: item.price,
@@ -32,7 +33,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 items: [
                     ...state.items,
-                    newItem
+                    newItem,
                 ]
             };
             case 'ITEM_REMOVE_FROM_CART':

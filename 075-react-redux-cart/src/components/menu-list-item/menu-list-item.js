@@ -1,7 +1,7 @@
 import React from 'react';
 import './menu-list-item.scss';
 
-const MenuListItem = ({menuItem, onAddToCart}) => {
+const MenuListItem = ({menuItem, onAddToCart, onAddToTotal}) => {
     const {title, price, url, category} = menuItem;
     return (
             <li className="menu__item">
