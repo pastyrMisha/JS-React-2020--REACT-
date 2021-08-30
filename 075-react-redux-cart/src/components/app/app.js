@@ -1,5 +1,5 @@
 import React from 'react';
-import {MainPage, CartPage} from '../pages';
+import {MainPage, CartPage, Total} from '../pages';
 import AppHeader from '../app-header';
 import {Route, Switch} from 'react-router-dom';
 
