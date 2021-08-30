@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
                 loading: true
             };
         case 'ITEM_ADD_TO_CART':
-            let id = action.payload;
+            const id = action.payload;
             const item = state.menu.find(item => item.id === id);
             const newItem = {
                 title: item.title,
@@ -28,7 +28,6 @@ const reducer = (state = initialState, action) => {
                 url: item.url,
                 id: item.id
             };
-
             return {
                 ...state,
                 items: [

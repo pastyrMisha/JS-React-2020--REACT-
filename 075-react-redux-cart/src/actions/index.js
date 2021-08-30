@@ -18,10 +18,10 @@ const addedToCart = (id) => {
     };
 };
 
-const addedToTotal = (id) => {
+const addedToTotal = (price) => {
     return {
         type: 'ITEM_ADD_TO_TOTAL',
-        payload: id
+        payload: price
     };
 };
 

@@ -1,14 +1,28 @@
 import React from 'react';
-import {MainPage, CartPage, Total} from '../pages';
+import {MainPage, CartPage} from '../pages';
 import AppHeader from '../app-header';
 import {Route, Switch} from 'react-router-dom';
-
+import {connect} from 'react-redux';
+// import {addedToCart} from '../../actions';
 import Background from './food-bg.jpg';
 
-const App = () => {
+
+const App = ({items}) => {
+
+console.log({items});
+//     items.map(element => {
+//         console.log(element.price);
+// });
+
+// items.map(item => {
+//     const {price} = item;
+//     return console.log(item); 
+// })
+
+
     return (
         <div style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
-            <AppHeader total={50}/>
+            <AppHeader total={[]}/>
             <Switch>
                 <Route 
                     path="/"
@@ -23,4 +37,21 @@ const App = () => {
     )
 }
 
-export default App;
+
+
+
+const mapStateToProps = ({items}) => {
+    return {
+        items
+    }
+};
+
+// const mapDispatchToProps = {
+//     addedToCart
+// };
+
+
+
+export default connect(mapStateToProps)(App);
+// export default App;
+

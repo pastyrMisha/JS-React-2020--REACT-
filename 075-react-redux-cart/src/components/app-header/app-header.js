@@ -9,7 +9,7 @@ const AppHeader = ({total}) => {
             <Link to = {'/'} className="header__link">Menu</Link>
             <Link to = "/cart" className="header__link">
                 <img className="header__cart" src={cartIcon} alt="cart"></img>
-                Total: {total} $
+                Total: <span> {total} </span> $
             </Link>
         </header>
     )
