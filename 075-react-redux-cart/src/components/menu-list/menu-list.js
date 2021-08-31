@@ -29,7 +29,6 @@ class MenuList extends Component {
                     menuItems.map(menuItem => {
                         return <MenuListItem 
                                 key={menuItem.id}
-                                price={menuItem.price}
                                 menuItem={menuItem}
                                 onAddToCart={() => addedToCart(menuItem.id)}/>
                     })
