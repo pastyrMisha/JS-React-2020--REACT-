@@ -8,11 +8,8 @@ import Background from './food-bg.jpg';
 
 const App = ({items}) => {
 
-    // const {price} = items; 
     let arr = items.map(item => item = item.price);
-
-// console.log({items});
-
+    
     return (
         <div style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
             <AppHeader items={arr}/>
