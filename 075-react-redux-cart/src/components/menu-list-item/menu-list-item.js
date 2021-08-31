@@ -3,8 +3,7 @@ import './menu-list-item.scss';
 
 const MenuListItem = ({menuItem, onAddToCart}) => {
     const {title, price, url, category} = menuItem;
-    // console.log(price);
-    
+
     return (
             <li className="menu__item">
                 <div className="menu__title">{title}</div>

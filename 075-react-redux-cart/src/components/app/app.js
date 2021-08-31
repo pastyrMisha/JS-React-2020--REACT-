@@ -6,36 +6,19 @@ import {connect} from 'react-redux';
 import Background from './food-bg.jpg';
 
 
-const App = ({items}) => {
+const App = ({price}) => {
 
-  
-        
-// for (let i = 0; i < items.length; i++) {
-//     console.log(items[i].price);
-// }
-    
+let total = price.map(item => item = item.price);
 
+let sum= 0;
 
-// arr.forEach(element => {
-//     return console.log(element.price);
-// });
-    
-console.log({items});
-//  console.log(item.price);
-
-//     items.map(element => {
-//         console.log(element.price);
-// });
-
-// items.map(item => {
-//     const {price} = item;
-//     return console.log(item); 
-// })
-
+for(let i=0; i< total.length; i++){
+    sum = sum + total[i];
+}
 
     return (
         <div style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
-            <AppHeader total={[]}/>
+            <AppHeader total={sum}/>
             <Switch>
                 <Route 
                     path="/"
@@ -51,14 +34,12 @@ console.log({items});
 }
 
 
-
-
-const mapStateToProps = ({items}) => {
+const mapStateToProps = ({price}) => {
     return {
-        items
+        price
     }
 };
 
 export default connect(mapStateToProps)(App);
-// export default App;
+
 
