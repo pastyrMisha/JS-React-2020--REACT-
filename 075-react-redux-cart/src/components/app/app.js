@@ -6,19 +6,16 @@ import {connect} from 'react-redux';
 import Background from './food-bg.jpg';
 
 
-const App = ({price}) => {
+const App = ({items}) => {
 
-let total = price.map(item => item = item.price);
+    // const {price} = items; 
+    let arr = items.map(item => item = item.price);
 
-let sum= 0;
-
-for(let i=0; i< total.length; i++){
-    sum = sum + total[i];
-}
+// console.log({items});
 
     return (
         <div style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
-            <AppHeader total={sum}/>
+            <AppHeader items={arr}/>
             <Switch>
                 <Route 
                     path="/"
@@ -34,9 +31,9 @@ for(let i=0; i< total.length; i++){
 }
 
 
-const mapStateToProps = ({price}) => {
+const mapStateToProps = ({items}) => {
     return {
-        price
+        items
     }
 };
 
