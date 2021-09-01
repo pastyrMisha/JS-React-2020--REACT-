@@ -2,7 +2,7 @@ const initialState = {
     menu: [],
     loading: true,
     items: [],
-    price: []
+    total: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -31,8 +31,7 @@ const reducer = (state = initialState, action) => {
                 id: item.id
             };
 
-            
-
+            const total = newItem.price;
 
 
              return {
@@ -41,10 +40,7 @@ const reducer = (state = initialState, action) => {
                     ...state.items,
                     newItem
                 ],
-                price: [
-                    ...state.items,
-                    newItem
-                ]
+                total: +state.total + +total
             };
             case 'ITEM_REMOVE_FROM_CART':
                 const idx = action.payload;
