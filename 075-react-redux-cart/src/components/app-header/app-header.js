@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 
 const AppHeader = ({total}) => {
  
-
     return (
         <header className="header">
             <Link to = {'/'} className="header__link">Menu</Link>
@@ -17,7 +16,6 @@ const AppHeader = ({total}) => {
         </header>
     )
 };
-
 
 const mapStateToProps = ({total}) => {
     return {

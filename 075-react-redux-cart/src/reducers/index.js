@@ -33,14 +33,13 @@ const reducer = (state = initialState, action) => {
 
             const total = newItem.price;
 
-
              return {
                 ...state,
                 items: [
                     ...state.items,
                     newItem
                 ],
-                total: +state.total + +total
+                total: state.total + total
             };
             case 'ITEM_REMOVE_FROM_CART':
                 const idx = action.payload;
