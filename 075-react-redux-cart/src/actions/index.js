@@ -25,9 +25,24 @@ const deleteFromCart = (id) => {
     };
 };
 
+const incQuantity = (id) => {
+    return {
+        type: 'ITEM_INC_QUANTITY',
+        payload: id
+    };
+};
+const decQuantity = (id) => {
+    return {
+        type: 'ITEM_DEC_QUANTITY',
+        payload: id
+    };
+};
+
 export {
     menuLoaded,
     menuRequested,
     addedToCart,
-    deleteFromCart
+    deleteFromCart,
+    incQuantity,
+    decQuantity
 };

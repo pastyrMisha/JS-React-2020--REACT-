@@ -16,6 +16,7 @@ const reducer = (state = initialState, action) => {
                 loading: false
             };
 
+// ==============================================================================
 
         case 'MENU_REQUESTED':
             return {
@@ -24,6 +25,8 @@ const reducer = (state = initialState, action) => {
                 loading: true
             };
 
+
+// ==============================================================================
 
         case 'ITEM_ADD_TO_CART':
             const id = action.payload;
@@ -68,13 +71,77 @@ const reducer = (state = initialState, action) => {
                 ],
                 total: state.total + total
             }
+
+// ==============================================================================
+
+            case 'ITEM_INC_QUANTITY':
+            const idi = action.payload;
+            const itemIdi = state.items.findIndex(item => item.id === idi);
             
+            const findInItemsi = state.items.find(item => item.id === idi);
+            let newItemi = {
+                ...findInItemsi,
+                qtty: ++findInItemsi.qtty
+            };
+
+            const totali = newItemi.price;
+
+            return {
+                ...state,
+                items: [
+                    ...state.items.slice(0, itemIdi),
+                    newItemi,
+                    ...state.items.slice(itemIdi + 1)
+                ],
+                total: state.total + totali
+            }
+
+// ==============================================================================
+
+            case 'ITEM_DEC_QUANTITY':
+                const idd = action.payload;
+                const itemIdd = state.items.findIndex(item => item.id === idd);
+                
+                const findInItemsd = state.items.find(item => item.id === idd);
+
+                let newItemd = {
+                    ...findInItemsd,
+                    qtty: findInItemsd.qtty - 1
+                };
+
+                const totald = newItemd.price;
+
+                if (findInItemsd.qtty <= 0) {
+                    newItemd = {
+                        findInItemsd,
+                        total: 0,
+                        qtty: 0
+                    };
+
+                    return {
+                        ...state
+                    }
+                }
+                return {
+                    ...state,
+                    items: [
+                        ...state.items.slice(0, itemIdd),
+                        newItemd,
+                        ...state.items.slice(itemIdd + 1)
+                    ],
+                    total: state.total - totald
+                }
+
+    // ==============================================================================
 
             case 'ITEM_REMOVE_FROM_CART':
                 const idx = action.payload;
                 const itemIndex = state.items.findIndex(item => item.id === idx);
                 const coeff =  state.items[itemIndex].qtty * state.items[itemIndex].price
 
+
+
+                
                 if (state.items[itemIndex].qtty > 1) {
                     return {
                         ...state,
@@ -85,7 +152,16 @@ const reducer = (state = initialState, action) => {
                         total: state.total - coeff
                     }
                 }
-
+                if (state.items.qtty <= 0) {
+                    return {
+                        ...state,
+                        items: [
+                            ...state.items.slice(0, itemIndex),
+                            ...state.items.slice(itemIndex + 1)
+                        ],
+                        total: 0
+                }
+            }
                 return {
                     ...state,
                     items: [
@@ -94,10 +170,6 @@ const reducer = (state = initialState, action) => {
                     ],
                     total: state.total - state.items[itemIndex].price
                 }
-
-
-
-
 
 
             default:

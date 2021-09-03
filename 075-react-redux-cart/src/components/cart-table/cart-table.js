@@ -1,9 +1,9 @@
 import React from 'react';
 import './cart-table.scss';
 import {connect} from 'react-redux';
-import { deleteFromCart } from '../../actions';
+import { deleteFromCart, decQuantity, incQuantity } from '../../actions';
 
-const CartTable = ({items, deleteFromCart}) => {
+const CartTable = ({items, deleteFromCart, decQuantity, incQuantity}) => {
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
@@ -17,9 +17,9 @@ const CartTable = ({items, deleteFromCart}) => {
                                 <div className="cart__item-title">{title}</div>
                                 <div className="cart__item-price">{price} ₽</div>
                                 <div className="cart__item-quantity">
-                                <button  className="cart__item-quantity-left">-</button>
+                                <button onClick={() => decQuantity(id)} id="qtty-left" className="cart__item-quantity-left">-</button>
                                 <span className="cart__item-quantity-value">{qtty}</span>
-                                <button  className="cart__item-quantity-right">+</button>
+                                <button onClick={() => incQuantity(id)} id="qtty-right" className="cart__item-quantity-right">+</button>
                                 </div>
                                 <div onClick={() => deleteFromCart(id)} className="cart__close">&times;</div>
                             </div>
@@ -45,7 +45,9 @@ const mapStateToProps = ({items}) => {
     
 // };
 const mapDispatchToProps = {
-    deleteFromCart
+    deleteFromCart,
+    decQuantity,
+    incQuantity
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartTable);
