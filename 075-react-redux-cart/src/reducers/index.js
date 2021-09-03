@@ -24,6 +24,8 @@ const reducer = (state = initialState, action) => {
             const id = action.payload;
             const item = state.menu.find(item => item.id === id);
 
+            
+
             const newItem = {
                 title: item.title,
                 price: item.price,
@@ -44,12 +46,16 @@ const reducer = (state = initialState, action) => {
             case 'ITEM_REMOVE_FROM_CART':
                 const idx = action.payload;
                 const itemIndex = state.items.findIndex(item => item.id === idx)
+
+                const totalPrice = newItem.price;
+                
                 return {
                     ...state,
                     items: [
                         ...state.items.slice(0, itemIndex),
                         ...state.items.slice(itemIndex + 1)
-                    ]
+                    ],
+                    total: state.totalPrice - totalPrice
                 }
             default:
                 return state;
