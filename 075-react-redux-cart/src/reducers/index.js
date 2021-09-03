@@ -8,24 +8,26 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   
     switch (action.type) {
+
         case 'MENU_LOADED':
             return {
                 ...state,
                 menu: action.payload,
                 loading: false
             };
+
+
         case 'MENU_REQUESTED':
             return {
                 ...state,
                 menu: state.menu,
                 loading: true
             };
+
+
         case 'ITEM_ADD_TO_CART':
             const id = action.payload;
             const item = state.menu.find(item => item.id === id);
-
-            
-
             const newItem = {
                 title: item.title,
                 price: item.price,
@@ -43,19 +45,19 @@ const reducer = (state = initialState, action) => {
                 ],
                 total: state.total + total
             };
+
+
             case 'ITEM_REMOVE_FROM_CART':
                 const idx = action.payload;
-                const itemIndex = state.items.findIndex(item => item.id === idx)
+                const itemIndex = state.items.findIndex(item => item.id === idx);
 
-                const totalPrice = newItem.price;
-                
                 return {
                     ...state,
                     items: [
                         ...state.items.slice(0, itemIndex),
                         ...state.items.slice(itemIndex + 1)
                     ],
-                    total: state.totalPrice - totalPrice
+                    total: state.total - state.items[itemIndex].price
                 }
             default:
                 return state;
