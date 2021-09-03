@@ -15,13 +15,15 @@
     &__item {
         position: relative;
         display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
         justify-content: space-between;
         align-items: center;
         margin-top: 40px;
         border: 1px solid rgba(256,256,256, .2);
         background-color: rgba(0,0,0,.7);
         box-shadow: 0 0 20px rgba(256,256,256, .1);
-        &-title, &-price  {
+        &-title, &-price, &-quantity  {
             width: 250px;
             text-align: center;
             color: #fff;
@@ -31,6 +33,20 @@
             height: 125px;
             width: 250px;
             object-fit: cover;
+        }
+        &-quantity {
+            display: flex;
+            justify-content: center;
+            &-left, &-right {
+                width: 30px;
+                cursor: pointer;
+            }
+            &-right {
+                margin-left: 10px;
+            }
+            &-left {
+                margin-right: 10px;
+            }
         }
     }
     &__close {
