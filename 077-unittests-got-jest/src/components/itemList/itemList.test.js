@@ -1,7 +1,5 @@
 import React from 'react';
 import ItemList from './itemList';
-// import withData from '../withData/withData';
-// import HousesPage from '../pages/housesPage';
 import {mount} from 'enzyme';
 import gotService from '../../services/gotService';
 
