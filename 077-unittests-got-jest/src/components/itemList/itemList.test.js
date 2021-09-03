@@ -12,7 +12,7 @@ describe('Testing <ItemList/>', () => {
                             renderItem={({name}) => name}/>)
 
     it('Click on item list must rerender all list in 1 instance', () => {
-        list.setState({itemList: [{name: 'wqw', id: 1}, {name: 'wqw', id: 2}]});
+        list.setState({data: [{name: 'wqw', id: 1}, {name: 'wqw', id: 2}]});
         list.find('.list-group-item:first-child').simulate('click');
         expect(list.find('ul')).toHaveLength(1);  
     });
