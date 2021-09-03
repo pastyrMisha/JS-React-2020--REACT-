@@ -8,9 +8,9 @@ const MenuListItem = ({menuItem, onAddToCart}) => {
             <li className="menu__item">
                 <div className="menu__title">{title}</div>
                 <img className="menu__img" src={url} alt={title}></img>
-                <div className="menu__category">Category: <span>{category}</span></div>
-                <div className="menu__price">Price: <span>{price}$</span></div>
-                <button onClick={() => onAddToCart(price)} className="menu__btn inc">Add to cart</button>
+                <div className="menu__category">Категория: <span>{category}</span></div>
+                <div className="menu__price">Цена: <span>{price} ₽</span></div>
+                <button onClick={() => onAddToCart(price)} className="menu__btn inc">В корзину</button>
             </li>
     )
 }

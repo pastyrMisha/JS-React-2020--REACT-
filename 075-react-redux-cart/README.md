@@ -19,7 +19,7 @@ const soldair = {
             {
                 id: 1,
                 name: "Alex",
-                rang: "trainee",
+                rang: "colonel",
                 qtt: 1
             },  
             {
