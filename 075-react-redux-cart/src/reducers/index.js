@@ -111,15 +111,14 @@ const reducer = (state = initialState, action) => {
 
                 const totald = newItemd.price;
 
-                if (findInItemsd.qtty <= 0) {
-                    newItemd = {
-                        findInItemsd,
-                        total: 0,
-                        qtty: 0
-                    };
-
+                if (state.total <= 0 || newItemd.qtty <= 0) {
                     return {
-                        ...state
+                        ...state,
+                        items: [
+                            ...state.items.slice(0, itemIdd),
+                            ...state.items.slice(itemIdd + 1)
+                        ],
+                        total: state.total - totald
                     }
                 }
                 return {
@@ -139,9 +138,6 @@ const reducer = (state = initialState, action) => {
                 const itemIndex = state.items.findIndex(item => item.id === idx);
                 const coeff =  state.items[itemIndex].qtty * state.items[itemIndex].price
 
-
-
-                
                 if (state.items[itemIndex].qtty > 1) {
                     return {
                         ...state,
@@ -152,16 +148,7 @@ const reducer = (state = initialState, action) => {
                         total: state.total - coeff
                     }
                 }
-                if (state.items.qtty <= 0) {
-                    return {
-                        ...state,
-                        items: [
-                            ...state.items.slice(0, itemIndex),
-                            ...state.items.slice(itemIndex + 1)
-                        ],
-                        total: 0
-                }
-            }
+
                 return {
                     ...state,
                     items: [
