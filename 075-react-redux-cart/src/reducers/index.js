@@ -62,7 +62,6 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-    
                 items: [
                     ...state.items,
                     newItem

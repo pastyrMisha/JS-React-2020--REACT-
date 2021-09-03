@@ -36,7 +36,19 @@
         background-color: #29a745;
         border-radius: 4px;
         color: #fff;
+        padding: 10px;
+        border-radius: 5px;
         font-size: 16px;
+        position: relative;
+        box-sizing: border-box;
+        transition: all 500ms ease; 
         cursor: pointer;
+        &:hover {
+            background: rgba(0,0,0,0);
+            color: #29a745;
+            box-shadow: inset 0 0 0 3px #29a745;
+        }
     }
 }
+  
+  
