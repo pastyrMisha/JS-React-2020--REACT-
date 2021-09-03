@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ItemList from './itemList';
-import withData from '../withData/withData';
-import HousesPage from '../pages/housesPage';
+// import withData from '../withData/withData';
+// import HousesPage from '../pages/housesPage';
 import {mount} from 'enzyme';
 import gotService from '../../services/gotService';
 
 describe('Testing <ItemList/>', () => {
     const service = new gotService();
-    const list = mount((ItemList) =>
-                            <getData={service.getAllHouses} 
+    const list = mount(<ItemList
+                            getData={service.getAllHouses} 
                             renderItem={({name}) => name}/>)
 
     it('Click on item list must rerender all list in 1 instance', () => {
-        list.setState({data: [{name: 'wqw', id: 1}, {name: 'wqw', id: 2}]});
+        list.setState({itemList: [{name: 'wqw', id: 1}, {name: 'wqw', id: 2}]});
         list.find('.list-group-item:first-child').simulate('click');
         expect(list.find('ul')).toHaveLength(1);  
     });
