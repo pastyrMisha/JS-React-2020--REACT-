@@ -18,7 +18,6 @@ shallow — поверхностный снимок Enzyme
 npm run test -u перезаписать Snapshot
 
 
-
 https://github.com/jest-community/jest-extended  — проверка на тип данных на массив, объект, data
 
 npm install jest-extended --save-dev
